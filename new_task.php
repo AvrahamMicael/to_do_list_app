@@ -32,14 +32,14 @@
 			<div class="row">
 				<div class="col-md-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a class="d-block" href="index.php">Pending</a></li>
+						<li class="list-group-item"><a class="d-block" href="pending_tasks.php">Pending</a></li>
 						<li class="list-group-item active"><a class="d-block" href="#">New</a></li>
 						<li class="list-group-item"><a class="d-block" href="all_tasks.php">All</a></li>
 					</ul>
 				</div>
 
 				<div class="col-md-9">
-					<div class="container pagina">
+					<div class="container page">
 						<div class="row">
 							<div class="col">
 								<h4>New Task</h4>
