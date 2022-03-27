@@ -23,12 +23,22 @@
 
 		<div class="container app d-flex justify-content-center">
 			<div class="page">
-				<form class="form-group" action="login_validation.php">
+				<form class="form-group" action="login_validation.php" method="post">
 					<label>Username:</label><br>
-					<input class="form-control" type="text" name="user">
+					<input class="form-control" type="text" name="username">
 					<label>Password:</label>
 					<input class="form-control" type="password" name="password">
-					<br>
+
+					<?php if(isset($_GET['authenticated']) && $_GET['authenticated'] == 0) { ?>
+
+						<div class="text-danger my-2">Incorrect username or password</div>
+
+					<?php } else { ?>
+
+						<br>
+
+					<?php }; ?>
+
 					<div class="d-flex justify-content-center">
 						<button type="submit" class="btn btn-info">Login</button>
 					</div>

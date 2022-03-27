@@ -1,5 +1,7 @@
 <?php
 
+	require 'access_validator.php';
+
 	$action = 'read';
 	require 'task_controller.php';
 
