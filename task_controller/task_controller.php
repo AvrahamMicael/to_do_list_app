@@ -9,6 +9,8 @@
 
     if($action == 'create') {
 
+        session_start();
+
         $task = new Task();
         $task->__set('task', $_POST['task']);
         $task->__set('id_user', $_SESSION['id_user']);

@@ -22,6 +22,9 @@
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 					To Do List App
 				</a>
+				<ul class="navbar-nav ml-auto">
+                	<li class="nav-item"><a href="logoff.php" class="nav-link">Logoff</a></li>
+            	</ul>
 			</div>
 		</nav>
 

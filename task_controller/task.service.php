@@ -28,13 +28,18 @@
                 ";
             } else {
                 $query = "
-                    select t.id, s.status, t.task, t.id_user, s.username
-                    from tb_tasks as t
-                    left join tb_status as s
-                    on t.id_status = s.id
-                    left join tb_users as u
-                    on u.id_user = t.id_user
-                "; //test
+                    SELECT
+                    u.username,
+                    t.id,
+                    t.task,
+                    t.id_user,
+                    s.status
+                    FROM tb_users as u
+                    RIGHT JOIN tb_tasks as t
+                    ON u.id_user = t.id_user
+                    LEFT JOIN tb_status as s
+                    ON t.id_status = s.id
+                ";
             };
             $stmt = $this->connection->prepare($query);
             $stmt->bindValue(':id_user', $this->task->__get('id_user'));

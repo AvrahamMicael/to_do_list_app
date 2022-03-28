@@ -28,6 +28,9 @@
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 					To Do List App
 				</a>
+				<ul class="navbar-nav ml-auto">
+                	<li class="nav-item"><a href="logoff.php" class="nav-link">Logoff</a></li>
+            	</ul>
 			</div>
 		</nav>
 
@@ -57,12 +60,10 @@
 										$id = $task_data->id;
 										$status = $task_data->status;
 
-										$id_user = '';
 										$user = '';
 
 										if($_SESSION['id_user'] == 1) {
-											$id_user = $task_data->id_user;
-											$user = $task_data->username;
+											$user = "<em>[$task_data->username-$task_data->id_user]</em>";
 										}
 
 										if($status == 'Pending') {
@@ -72,7 +73,7 @@
 
 									<div class="row mb-3 d-flex align-items-center">
 										<div class="col-sm-9" id="task_<?= $id ?>">
-											<?= $task ?> <em>[<?= $user ?>-<?= $id_user ?>]</em>
+											<?= $task ?> <?= $user ?>
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-around">
 											<a href="#"><i class="fas fa-trash-alt fa-lg text-danger" onclick="deleteTask(<?= $id ?>, 'pending_tasks.php')"></i></a>
