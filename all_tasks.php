@@ -57,6 +57,14 @@
 										$id = $task_data->id;
 										$status = $task_data->status;
 
+										$id_user = '';
+										$user = '';
+
+										if($_SESSION['id_user'] == 1) {
+											$id_user = $task_data->id_user;
+											$user = $task_data->username;
+										}
+
 										$amount++;
 										$finish_color = 'text-warning';
 
@@ -64,7 +72,7 @@
 
 									<div class="row mb-3 d-flex align-items-center">
 										<div class="col-sm-9" id="task_<?= $id ?>">
-											<?= $task ?> <span class="font-weight-bold">(<?= $status ?>)</span>
+											<?= $task ?> <strong>(<?= $status ?>)</strong> <em>[<?= $user ?>-<?= $id_user ?>]</em>
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-around">
 											<a href="#"><i class="fas fa-trash-alt fa-lg text-danger" onclick="deleteTask(<?= $id ?>, 'all_tasks.php')"></i></a>

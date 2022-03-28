@@ -19,7 +19,7 @@
     foreach($users as $user_obj) {
         if($username == $user_obj->username && $password == $user_obj->password) {
             $_SESSION['authenticated'] = true;
-            $id_user = $user_obj->id_user;
+            $_SESSION['id_user'] = $user_obj->id_user;
             break;
         }
     };

@@ -11,20 +11,20 @@
 
         $task = new Task();
         $task->__set('task', $_POST['task']);
+        $task->__set('id_user', $_SESSION['id_user']);
         
         $connection = new Connection();
         
         $taskService = new TaskService($connection, $task);
     
-        if($_GET['action'] == 'create')
         $taskService->taskCreate();
-    
     
         header('location: new_task.php?added=1');
 
     } else if($action == 'read') {
 
         $task = new Task();
+        $task->__set('id_user', $_SESSION['id_user']);
 
         $connection = new Connection();
 

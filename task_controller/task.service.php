@@ -11,19 +11,33 @@
         }
 
         public function taskCreate() {
-            $query = "insert into tb_tasks(task) values (:task)";
+            $query = "insert into tb_tasks(task, id_user) values (:task, :id_user)";
             $stmt = $this->connection->prepare($query);
             $stmt->bindValue(':task', $this->task->__get('task'));
+            $stmt->bindValue(':id_user', $this->task->__get('id_user'));
             $stmt->execute();
         }
         public function taskRead() {
-            $query = "
-                select t.id, s.status, t.task 
-                from tb_tasks as t
-                left join tb_status as s
-                on t.id_status = s.id
-            ";
+            if($this->task->id_user != 1) {
+                $query = "
+                    select t.id, s.status, t.task
+                    from tb_tasks as t
+                    left join tb_status as s
+                    on t.id_status = s.id
+                    where t.id_user = :id_user
+                ";
+            } else {
+                $query = "
+                    select t.id, s.status, t.task, t.id_user, s.username
+                    from tb_tasks as t
+                    left join tb_status as s
+                    on t.id_status = s.id
+                    left join tb_users as u
+                    on u.id_user = t.id_user
+                "; //test
+            };
             $stmt = $this->connection->prepare($query);
+            $stmt->bindValue(':id_user', $this->task->__get('id_user'));
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
