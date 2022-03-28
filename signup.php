@@ -23,36 +23,32 @@
 
 		<div class="container app d-flex justify-content-center">
 			<div class="page">
-				<h3 class="text-info">Login</h3>
-				<form class="form-group" action="login_validation.php" method="post">
+                <h3 class="text-success">Sign Up</h3>
+				<form class="form-group" action="signup_validation.php" method="post">
 					<label>Username:</label><br>
 					<input class="form-control" type="text" name="username">
 					<label>Password:</label><br>
 					<input class="form-control" type="password" name="password">
+					
+                    <?php if(isset($_GET['sameUsername']) && $_GET['sameUsername'] == 1) { ?>
 
-					<?php if(isset($_GET['authenticated']) && $_GET['authenticated'] == 0) { ?>
+                        <div class="text-danger my-2">Username is already being used</div>
 
-						<div class="text-danger my-2">Incorrect username or password</div>
+                    <?php } else { ?>
 
-					<?php } else if(isset($_GET['signup']) && $_GET['signup'] == 1) { ?>
+                        <br>
 
-						<div class="text-success my-2">Successfully signed up</div>
-
-					<?php } else { ?>
-
-						<br>
-
-					<?php }; ?>
+                    <?php }; ?>
 
 					<div class="d-flex justify-content-center">
-						<button type="submit" class="btn btn-info">Login</button>
+						<button type="submit" class="btn btn-success">Sign Up</button>
 					</div>
 				</form>
-				<hr>
-				<div class="lead d-flex justify-content-center little-small">Doesn't have an account?</div>
+                <hr>
+				<div class="lead d-flex justify-content-center little-small">Already have an account?</div>
 				<br>
 				<div class="d-flex justify-content-center">
-					<a href="signup.php" class="btn btn-success">Sign Up</a>
+					<a href="index.php" class="btn btn-info">Login</a>
 				</div>
 			</div>
 		</div>

@@ -8,10 +8,10 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    $query = "select * from tb_users";
-
     $connection = new Connection();
     $conn = $connection->connect();
+    
+    $query = "select * from tb_users";
 
     $stmt = $conn->query($query);
     $users = $stmt->fetchAll(PDO::FETCH_OBJ);
