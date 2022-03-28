@@ -1,3 +1,9 @@
+<?php
+
+	session_start();
+	if(isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) header('location: pending_tasks.php');
+
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
